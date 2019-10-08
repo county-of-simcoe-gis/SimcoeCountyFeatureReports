@@ -4,6 +4,12 @@
 
 For now, Real Estate, Forestry and Child Care Facilities are the only implemented pages.
 
+Real Estate: https://opengis.simcoe.ca/featurereports?TYPE=REALESTATE&ID=30739961
+
+Forestry: https://opengis.simcoe.ca/featurereports/?TYPE=FORESTRY&ID=COPELAND&SHOWHEADER=1
+
+Child Care: https://opengis.simcoe.ca/featurereports/?SHOWHEADER=1&TYPE=CHILDCARE&ID=YMCA%20Young%20Parent%20Program%20Barrie
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
