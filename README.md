@@ -2,7 +2,7 @@
 
 ## Live demo can be found [here](https://opengis.simcoe.ca/?THEME=Local%20Real%20Estate). Click on a listing and click the Photos button.
 
-For now, real estate is the only implemented page. Forestry coming soon. Designed to work with our NodeJS [WebApi](https://github.com/county-of-simcoe-gis/SimcoeCountyWebApi).
+For now, Real Estate, Forestry and Child Care Facilities are the only implemented pages.
 
 ## Getting Started
 
