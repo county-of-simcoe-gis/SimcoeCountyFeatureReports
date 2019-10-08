@@ -1,0 +1,15 @@
+.error {
+  background-color: #db5050;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 14pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* .hidden {
+  display: none;
+} */

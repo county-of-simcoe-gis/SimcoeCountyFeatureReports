@@ -1,0 +1,77 @@
+.mainContainer {
+  max-width: 700px;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.header {
+  display: table;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.title {
+  display: table-cell;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 4.2px;
+  font-size: 20px;
+  color: #00539b;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.5);
+  vertical-align: middle;
+}
+
+.subTitle {
+  display: table-cell;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 4.2px;
+  font-size: 18px;
+  color: #333333;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.restrictedTitle {
+  font-size: 16px;
+  color: #00539b;
+  margin-bottom: 6px;
+}
+
+.restrictedLink {
+  padding-left: 10px;
+}
+.borderRight {
+  border-right: 1px solid #ccc;
+}
+
+.activities {
+  display: table;
+  width: 100%;
+}
+
+.activityRow {
+  display: table-row;
+}
+
+.leftContainer {
+  display: table-cell;
+  width: 300px;
+  padding-right: 30px;
+}
+
+.rightContainer {
+  display: table-cell;
+  padding-left: 30px;
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}

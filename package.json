@@ -1,10 +1,12 @@
 {
   "name": "realestateimageviewer",
+  "homepage": "https://opengis.simcoe.ca/featurereports",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-image-gallery": "^0.8.18",
     "react-scripts": "3.0.1"
   },
   "scripts": {

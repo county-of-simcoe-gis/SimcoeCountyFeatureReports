@@ -1,0 +1,9 @@
+.hidden {
+  display: none;
+}
+
+.border-bottom {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
