@@ -10,39 +10,40 @@ const wfsUrl = config.wfsRealEstate;
 class RealEstate extends Component {
   constructor(props) {
     super(props);
-    this.images = [];
-    this.state = { hasError: false, info: {} };
-
-    this.init();
+    this.state = { hasError: false, info: {}, featureImages: [] };
   }
 
   init = () => {
     if (this.props.params.type !== "REALESTATE") return;
 
-    console.log("Real Estate");
-    helpers.getJSON(wfsUrl + this.props.params.id, result => {
+    helpers.getJSON(wfsUrl + this.props.params.id, (result) => {
       if (result.features.length === 0) {
         this.setState({ hasError: true });
         return;
       }
 
       const featureProps = result.features[0].properties;
-      console.log(featureProps);
+      // console.log(featureProps);
       this.setState({ info: featureProps });
-
+      let currentImages = [];
       // CREATE IMAGE ARRAY FOR CAROUSEL
-      for (let index = 0; index < featureProps.num_images; index++) {
-        const imageUrl = featureProps.image_url.replace("-0", "-" + index);
-        this.images.push({ original: imageUrl, thumbnail: imageUrl });
-      }
+      if (featureProps.num_images === 0) currentImages.push({ original: featureProps.image_url, thumbnail: featureProps.image_url });
+      else
+        for (let index = 0; index < featureProps.num_images; index++) {
+          const imageUrl = featureProps.image_url.replace("-0", "-" + index);
+          currentImages.push({ original: imageUrl, thumbnail: imageUrl });
+        }
+      this.setState({ featureImages: currentImages });
     });
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.init();
+  }
 
   render() {
     const { params } = this.props;
-    const { info } = this.state;
+    const { info, featureImages } = this.state;
 
     return (
       <div className={params.type === "REALESTATE" && !window.hasError ? styles.mainContainer : "hidden"}>
@@ -57,7 +58,7 @@ class RealEstate extends Component {
             Realtor® website.
           </a>
         </div>
-        <ImageGallery items={this.images} autoPlay={true} slideDuration={200} lazyLoad={true} showIndex={true} showFullscreenButton={false} />
+        <ImageGallery items={featureImages} autoPlay={true} slideDuration={200} lazyLoad={true} showIndex={true} showFullscreenButton={false} />
         <div className="border-bottom" />
         <div style={{ textAlign: "center" }}>
           <a className="btn btn-info" href={info.url_link} target="_blank" rel="noopener noreferrer">
