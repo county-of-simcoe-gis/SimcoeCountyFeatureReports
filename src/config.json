@@ -1,5 +1,6 @@
 {
   "wfsRealEstate": "https://opengis.simcoe.ca/geoserver/wfs?service=wfs&version=2.0.0&request=GetFeature&typeNames=simcoe:Local_Real_Estate_Points_Feature_Reports&outputFormat=application/json&cql_filter=mlsno=",
   "wfsForestry": "https://opengis.simcoe.ca/geoserver/wfs?service=wfs&version=2.0.0&request=GetFeature&typeNames=simcoe:Forest_Tracts_Feature_Reports&outputFormat=application/json&cql_filter=Tract=",
-  "wfsChildCare": "https://opengis.simcoe.ca/geoserver/wfs?service=wfs&version=2.0.0&request=GetFeature&typeNames=simcoe:Child_Care_Facilities_Feature_Reports&outputFormat=application/json&cql_filter=name="
+  "wfsChildCare": "https://opengis.simcoe.ca/geoserver/wfs?service=wfs&version=2.0.0&request=GetFeature&typeNames=simcoe:Child_Care_Facilities_Feature_Reports&outputFormat=application/json&cql_filter=name=",
+  "apiUrl": "https://opengis.simcoe.ca/api_v2/"
 }

@@ -27,13 +27,12 @@ class RealEstate extends Component {
       this.setState({ info: featureProps });
       let currentImages = [];
       // CREATE IMAGE ARRAY FOR CAROUSEL
-      if (featureProps.num_images === 0) currentImages.push({ original: featureProps.image_url, thumbnail: featureProps.image_url });
-      else
-        for (let index = 0; index < featureProps.num_images; index++) {
-          const imageUrl = featureProps.image_url.replace("-0", "-" + index);
-          currentImages.push({ original: imageUrl, thumbnail: imageUrl });
-        }
-      this.setState({ featureImages: currentImages });
+      helpers.getJSON(`${config.apiUrl}public/map/theme/realestate/images/${this.props.params.id}`, (result) => {
+        result.forEach((image) => {
+          currentImages.push({ original: image.url, thumbnail: image.url });
+        });
+        this.setState({ featureImages: currentImages });
+      });
     });
   };
 
