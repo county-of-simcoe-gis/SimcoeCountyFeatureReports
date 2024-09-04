@@ -1,4 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+adm# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 sc_copyToServer.bat
 .vscode
@@ -23,3 +23,4 @@ sc_copyToServer.bat
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+Build.ps1
