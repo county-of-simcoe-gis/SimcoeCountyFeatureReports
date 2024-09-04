@@ -10,27 +10,27 @@ class RealEstate extends Component {
     super(props);
     this.images = [];
     this.state = { hasError: false, info: {} };
-
-    this.init();
   }
 
   init = () => {
     if (this.props.params.type !== "FORESTRY") return;
 
     const url = wfsUrl + "'" + this.props.params.id + "'";
-    helpers.getJSON(url, result => {
+    helpers.getJSON(url, (result) => {
       if (result.features.length === 0) {
         this.setState({ hasError: true });
         return;
       }
 
       const featureProps = result.features[0].properties;
-      console.log(featureProps);
+      // console.log(featureProps);
       this.setState({ info: featureProps });
     });
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.init();
+  }
 
   render() {
     const { params } = this.props;
@@ -40,20 +40,24 @@ class RealEstate extends Component {
       <div className={params.type === "FORESTRY" && !window.hasError ? styles.mainContainer : "hidden"}>
         <div className={params.showHeader ? styles.header : "hidden"}>
           <img src={images["forestry-logo.png"]} style={{ paddingRight: "25px" }} alt="logo" />
-          <span className={styles.title}>{info.tract}</span>&nbsp;
-          <span className={styles.subTitle}>{`(${info.muni})`}</span>
+          <span className={styles.title}>{info.Tract}</span>&nbsp;
+          <span className={styles.subTitle}>{`(${info.Municipality})`}</span>
         </div>
         <div className={params.showHeader ? "border-bottom" : "hidden"}>
-          {`Below are the permitted, prohibited and restricted activities for the ${info.tract} Tract within SPRINGWATER. Please ensure to follow these regulations as they are assigned to the forest tract as part of its overall management plan.`}
+          {`Below are the permitted, prohibited and restricted activities for the ${info.Tract} Tract within SPRINGWATER. Please ensure to follow these regulations as they are assigned to the forest tract as part of its overall management plan.`}
         </div>
         <div className={styles.activities}>
           <div className={styles.activityRow}>
             <div className={`${styles.borderRight} ${styles.leftContainer}`}>
               <div className={styles.restrictedTitle}>Restricted Activities</div>
-              <RestrictedActivity name="ATV Clubs" allowed={info.atv} link="https://ofatv.org/"></RestrictedActivity>
-              <RestrictedActivity name="Snowmobile Clubs" allowed={info.snowmobile} link="https://www.ofsc.on.ca/"></RestrictedActivity>
-              <RestrictedActivity name="Trail Riders (OFTR)" allowed={info.offroadvehicle} link="https://oftr.ca/"></RestrictedActivity>
-              <RestrictedActivity name={"Hunting - WMU (" + info.wmu + ")"} allowed={info.hunting} link="https://www.ontario.ca/document/ontario-hunting-regulations-summary"></RestrictedActivity>
+              <RestrictedActivity name="ATV Clubs" allowed={info.ATV} link="https://ofatv.org/"></RestrictedActivity>
+              <RestrictedActivity name="Snowmobile Clubs" allowed={info.Snowmobile} link="https://www.ofsc.on.ca/"></RestrictedActivity>
+              <RestrictedActivity name="Trail Riders (OFTR)" allowed={info["Off Road Vehicle"]} link="https://oftr.ca/"></RestrictedActivity>
+              <RestrictedActivity
+                name={"Hunting - WMU (" + info["Wildlife Management Unit"] + ")"}
+                allowed={info.Hunting}
+                link="https://www.ontario.ca/document/ontario-hunting-regulations-summary"
+              ></RestrictedActivity>
               <div className="border-bottom" />
             </div>
 
@@ -109,7 +113,7 @@ class RealEstate extends Component {
 
 export default RealEstate;
 
-const RestrictedActivity = props => {
+const RestrictedActivity = (props) => {
   return (
     <div>
       <img src={props.allowed === "YES" ? images["check.png"] : images["cross.png"]} alt={"Activity"}></img>

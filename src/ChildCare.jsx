@@ -8,29 +8,28 @@ const wfsUrl = config.wfsChildCare;
 class RealEstate extends Component {
   constructor(props) {
     super(props);
-    this.images = [];
-    this.state = { hasError: false, info: {} };
-
-    this.init();
+    this.state = { hasError: false, info: {}, images: [] };
   }
 
   init = () => {
     if (this.props.params.type !== "CHILDCARE") return;
 
     const url = wfsUrl + "'" + this.props.params.id + "'";
-    helpers.getJSON(url, result => {
+    helpers.getJSON(url, (result) => {
       if (result.features.length === 0) {
         this.setState({ hasError: true });
         return;
       }
 
       const featureProps = result.features[0].properties;
-      console.log(featureProps);
+      // console.log(featureProps);
       this.setState({ info: featureProps });
     });
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.init();
+  }
 
   render() {
     const { params } = this.props;
@@ -120,7 +119,7 @@ class RealEstate extends Component {
 
 export default RealEstate;
 
-const Activity = props => {
+const Activity = (props) => {
   return (
     <div>
       <img src={props.allowed > 0 ? images["check.png"] : images["cross.png"]} alt={"Activity"} style={{ paddingRight: "10px" }}></img>
