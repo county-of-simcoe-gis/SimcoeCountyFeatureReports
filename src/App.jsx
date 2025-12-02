@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./App.module.css";
 import RealEstate from "./RealEstate.jsx";
 import Forestry from "./Forestry.jsx";
-import ChildCare from "./ChildCare";
+import ChildCare from "./ChildCare.jsx";
 import "./global.css";
 
 function App() {
