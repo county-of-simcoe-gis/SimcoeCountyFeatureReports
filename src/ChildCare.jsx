@@ -129,9 +129,9 @@ const Activity = (props) => {
 };
 
 // IMPORT ALL IMAGES
-const images = importAllImages(require.context("./images", false, /\.(png|jpe?g|svg|gif)$/));
-function importAllImages(r) {
-  let images = {};
-  r.keys().map((item, index) => (images[item.replace("./", "")] = r(item)));
-  return images;
-}
+const imageModules = import.meta.glob('./images/*.(png|jpg|jpeg|svg|gif)', { eager: true, import: 'default' });
+const images = Object.keys(imageModules).reduce((acc, path) => {
+  const fileName = path.replace('./images/', '');
+  acc[fileName] = imageModules[path];
+  return acc;
+}, {});
